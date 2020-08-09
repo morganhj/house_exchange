@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   root to: 'pages#landing'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :homes
+  resources :exchanges
+
   resources :spec, only: [:new, :create]
 
   # API for fetching homes from front-end!

@@ -1,0 +1,13 @@
+<% unless @exchange.home.nil? %>
+      <div id='home-exchange-dates' class="form-wrapper mt-5" data-unavailable="<%= @home&.unavailable_dates.to_json %>" style="margin: 0 auto;">
+    <div id="to_calendar_start" class="calendar-btn ml-1 mb-2"><i class="fas fa-undo"></i> start date</div>
+        <%= simple_form_for [@exchange] do |f| %>
+        <%= f.input :start_date, as: :hidden, input_html: {id:"start", class: "datepicker hide"} %>
+        <%= f.input :end_date, as: :hidden, input_html: {id:"end", class: "datepicker hide"} %>
+        <%= f.input :home_id, as: :hidden, input_html: { value: @exchange.home.nil? ? 0 : @exchange.home.id } %>
+        <div id="to_calendar_end" class="calendar-btn text-right mb-3">pick end date <i class="fas fa-arrow-right"></i></div>
+          <%= f.submit "Start exchange", class: "btn btn-custom", style: "width: 100%", id: "exchange-start-btn", disabled: true%>
+
+        <% end %>
+      </div>
+    <% end %>

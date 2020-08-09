@@ -31,7 +31,7 @@ import "bootstrap";
 // import "@fortawesome/fontawesome-free/css/all.min.css"
 import $ from "jquery"
 import "popper.js"
-import "../plugins/flatpickr";
+import { initFlatpickr } from "../plugins/flatpickr";
 import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
 
 import { initMapbox } from '../plugins/init_mapbox';
@@ -40,6 +40,8 @@ import { initAutocompleteCity } from "../plugins/init_autocomplete";
 // import { initChatbox } from "../plugins/init_chatbox";
 // import { initCalendar } from "../plugins/init_calendar";
 import { initHomesForm } from "../plugins/init_homes_form";
+import "../plugins/init_nav_scroll";
+import "../plugins/init_carousel";
 // import { scrollLastMessageIntoView } from '../components/scroll';
 
 
@@ -51,6 +53,7 @@ import { initHomesForm } from "../plugins/init_homes_form";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  	initFlatpickr();
 	initAutocompleteLocation();
 	initAutocompleteCity();
 	initMapbox();

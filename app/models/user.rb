@@ -6,4 +6,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_one :home
   has_many :exchanges
+
+  def full_name
+  	return "#{self.first_name.capitalize} #{self.last_name.capitalize}"
+  end
 end

@@ -1,0 +1,132 @@
+.banner {
+  background-size: cover;
+  padding: 2rem 10rem 10rem 3rem;
+  margin: 0;
+  display: flex;
+  padding-top: 120px;
+  padding-bottom: 70px;
+  padding-left: 100px;
+}
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 44px;
+  font-weight: bold;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 600;
+}
+.banner p {
+  font-size: 20px;
+  color: white;
+  text-align: left;
+  font-family:Poppins;
+}
+.login.button {
+border-radius: 10%;
+}
+.btn-hover:hover {
+color:#F2994A;
+}
+
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+@media screen and (max-width: 800px) {
+  section.banner h1 {
+    font-size: 32px;
+  }
+}
+@media screen and (min-width: 768px) {
+  section.banner h1 {
+    font-size: 44px;
+  }
+}
+@media screen and (max-width: 800px) {
+  #house  {
+   flex-direction: column-reverse;
+}
+}
+@media screen and (max-width: 800px) {
+  #handshake  {
+   flex-direction: column-reverse;
+}
+}
+.container p {
+font-family: Poppins;
+color: black;
+font-size: 16px;
+}
+
+
+
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+    
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(33.333%);
+    }
+    
+    .carousel-inner .carousel-item-left.active, 
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-33.333%);
+    }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+  transform: translateX(0);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+hr {
+  
+}

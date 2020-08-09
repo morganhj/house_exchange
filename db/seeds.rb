@@ -6,7 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require_relative 'seeds/users'
+require_relative 'seeds/homes'
 
+puts "Removing all exchanges"
+Exchange.delete_all
+puts "Removing all homes"
+Home.delete_all
 puts "Removing all users"
 User.delete_all
 puts "Removing all categories"
@@ -25,3 +30,13 @@ puts "Creating categories"
 ["House", "Apartment", "Studio", "Duplex"].each do |category|
 	Category.create!(name: category)
 end
+
+puts "Creating Homes"
+HOMES.each_with_index do |home, index|
+  new_home = Home.new(home.except(:user, :category))
+  new_home.user = User.all[index]
+  new_home.category = Category.find_by(name: home[:category])
+  new_home.save!
+end
+
+

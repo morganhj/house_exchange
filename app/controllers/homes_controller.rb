@@ -54,7 +54,6 @@ class HomesController < ApplicationController
   def show
     @home = Home.find(params[:id])
     @exchange = @home.exchanges.build
-    authorize @home
     @markers = [
       {
         lat: @home.latitude,

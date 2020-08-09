@@ -28,6 +28,9 @@
   width: 95%;
   height: 230px;
   margin: 16px;
+  margin-top: 0;
+  border-radius: 0 0 30px 0;
+  overflow: hidden;
 
   &:hover {
     text-decoration: none !important;
@@ -126,4 +129,49 @@ object-fit: cover;
     font-weight: bolder;
     margin: 0px;  
   }
+}
+
+.card-text {
+  display: -webkit-box;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+#home-list {
+  padding: 20px;
+  overflow-y: scroll;
+  height: calc(100vh - 167.19px);
+}
+
+
+// SHOW PAGE
+
+/*BUTTON*/
+.btn-custom {
+  border-radius: 50px;
+  margin: 1rem;
+  padding: 1rem 2rem;
+  color: #fff;
+  background-color: #f2994a;
+  color: #fff;
+  font-size: 24px;
+}
+.btn-custom:hover {
+  color: #fff;
+  background-color: #e68129;
+}
+
+.small-images-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr ;
+  grid-template-columns: 1fr 1fr ;
+  grid-gap: 10px;
+
+}
+
+
+.house-description-calendar {
+  
 }

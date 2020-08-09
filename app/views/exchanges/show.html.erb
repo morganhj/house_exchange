@@ -1,0 +1,134 @@
+<div class="row exchange_show" style="height: 50vh">
+	<div class="col-6">
+		<div class="card-user">
+      <div class="user-card-header">
+      	<% if @exchange.home.user == current_user %>
+        <img
+          class="rounded-circle"
+          src=<%= cl_image_path @exchange.user.avatar.key %>
+        />
+        <% else %>
+        <img
+          class="rounded-circle"
+          src=<%= cl_image_path @exchange.home.user.avatar.key %>
+        />
+        <% end %>
+        <div>
+          <h4>Joined</h4>
+          <p><%= @exchange.user.created_at.to_date %></p>
+        </div>
+        <div class="user-rating">
+          <h4>User rating</h4>
+          <!--#region stars-->
+          <div class="starts-container">
+            <svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-star-fill"
+              fill="gold"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+              />
+            </svg>
+            <svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-star-fill"
+              fill="gold"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+              />
+            </svg>
+            <svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-star-fill"
+              fill="gold"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+              />
+            </svg>
+          </div>
+          <!--#endregion stars-->
+        </div>
+        <div>
+          <h4>Response Rate</h4>
+          <p>Quick</p>
+        </div>
+      </div>
+      <div class="card-user-infos">
+      	<% if @exchange.home.user == current_user %>
+	        <h2><%= @exchange.user.name.full_name  %></h2>
+	        <h6><%= @exchange.user.profession %></h6>
+	        <p>
+	          About me:
+	        </p>
+	        <p>
+	          <%= @exchange.user.introduction %>
+	        </p>
+  		<% else %>
+  			<h2><%= @exchange.home.user.full_name %></h2>
+	        <h6><%= @exchange.home.user.profession %></h6>
+	        <p>
+	          About me:
+	        </p>
+	        <p>
+	          <%= @exchange.home.user.introduction %>
+	        </p>
+      	<% end %>
+      </div>
+    </div>
+	</div>
+	<div class="col-6">
+		<div>
+	  	<div class="card-product">
+	  		<% if @exchange.home.photos.first.nil? %>
+	  		<img
+	  		class="rounded-circle"
+	  		src=<%= cl_image_path "no_photo" %>
+	  		/>
+	  		<% else %>
+	  		<img
+	  		class="rounded-circle"
+	  		src=<%= cl_image_path @exchange.home.photos.first.key %>
+	  		/>
+	  		<% end %>
+		  <div class="card-product-infos">
+		    <h2><strong><%= @exchange.home.name %></strong></h2>
+		    <p><%= @exchange.home.description %></p>
+		  </div>
+		</div>
+	  </div>
+	</div>
+</div>
+<div class="row" style="height: 50vh">
+	<div class="col-6">
+		<%= simple_form_for [@exchange] do |f| %>
+        <%= f.input :start_date, as: :hidden, input_html: {id:"start", class: "datepicker hide"} %>
+        <%= f.input :end_date, as: :hidden, input_html: {id:"end", class: "datepicker hide"} %>
+        <% end %>
+	</div>
+	<div class="col-6">
+		<div
+      id="map"
+      style="width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;"
+      data-page="exchange_show"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      data-filter="<%= @filter %>"
+      ></div>
+	</div>
+</div>

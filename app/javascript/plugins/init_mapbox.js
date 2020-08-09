@@ -41,10 +41,8 @@ const initMapbox = () => {
 
     if (mapElement.dataset.page == "index") {
 
+        let initfilter = JSON.parse(mapElement.dataset.filter)
 
-      let initfilter = JSON.parse(mapElement.dataset.filter)
-      // Search for filter(location) information to set map to that location
-      // console.log(`1- ${Date.now()}`)
       geocodingClient.forwardGeocode({
           query: initfilter["address"],
           limit: 1
@@ -54,7 +52,7 @@ const initMapbox = () => {
           const match = response.body;
           // console.log(`2- ${Date.now()}`)
           console.log(match)
-          map.setZoom(12)
+          map.setZoom(10)
           map.setCenter([match.features[0].center[0], match.features[0].center[1]])
         });
       // console.log(`3- ${Date.now()}`)
@@ -100,7 +98,7 @@ const initMapbox = () => {
               const spaces_svg_url = `https://res.cloudinary.com/mhoare/image/upload/v1594178167/blueprint.svg`
               const total_area_svg_url = `https://res.cloudinary.com/mhoare/image/upload/v1594178167/measure.svg`
               const homeCard = `
-                                  <div class="row shadow-sm bg-white rounded home-card">
+                                  <div class="row shadow-sm home-card" style="background-color: rgba(0,0,0,0.05);">
                                     <div class="col-12 col-lg-4 p-0 rounded-left overflow-hidden">  
                                       <div id="carouselExampleFade-${home["id"]}" class="carousel slide carousel-fade rounded" data-ride="carousel">
                                         <div class="carousel-inner">
@@ -121,7 +119,7 @@ const initMapbox = () => {
                                     </div>
                                     <a href="/homes/${home["id"]}" class="col-12 col-lg-8 home-card-content">
                                       <div class="row home-card-body p-2" style="height: 140px; overflow: hidden">
-                                        <div class="col-8 p-0">
+                                        <div class="col-12 p-0">
                                           <h6 class="card-title mb-1">${home["name"]}</h6>
                                           <h7 class="card-text" style="color: black;">${home["description"]}</h7>
                                         </div>
@@ -161,11 +159,11 @@ const initMapbox = () => {
                                           </div>
                                       </div>
                                       <div class="row home-card-footer rounded" style="height: 80px; overflow: hidden; padding-bottom: 15px;">
-                                        <small class="col-9 text-muted" style="align-self: flex-end"> 
+                                        <small class="col-8 text-muted" style="align-self: flex-end"> 
                                           ${home["category"]["name"]} ${home["address"]}
                                           <i class="fas fa-map-marker-alt"></i>
                                         </small>
-                                        <div class="col-3 d-flex justify-content-center align-items-end">
+                                        <div class="col-4 d-flex justify-content-center align-items-end">
                                           <div class="home-card-rating">
                                             <div class="d-flex"><i class="fas fa-star mr-1 my-auto"></i><p style="color: black;">4.7</p></div>
                                             <p style="color: black;">(55)</p>
@@ -203,7 +201,7 @@ const initMapbox = () => {
           .send()
           .then(response => {
             const match = response.body;
-            map.setZoom(12)
+            map.setZoom(10)
             map.panTo([match.features[0].center[0],match.features[0].center[1]])
           });
           setTimeout(apiSearch, 500)
@@ -220,7 +218,7 @@ const initMapbox = () => {
 
 
     } else {
-      map.setZoom(12)
+      map.setZoom(10)
       map.setCenter({ "lng": markers[0].lng, "lat": markers[0].lat })
     }
   }

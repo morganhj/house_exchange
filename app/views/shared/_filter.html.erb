@@ -1,6 +1,5 @@
-<div class="py-2" style="background-color: white">
-  <div class="container">
-    <%= simple_form_for homes_path, url: homes_path, method: :get, html: { class: "form-inline d-block bg-white rounded-lg d-lg-flex justify-content-lg-between search-bar m-0 p-2" } do |f| %>
+<div class="" style="">
+    <%= simple_form_for homes_path, url: homes_path, method: :get, html: { class: "form-inline d-block rounded-lg d-lg-flex justify-content-lg-between search-bar m-0 p-2" } do |f| %>
       <div class="form-group flex-grow-1">
         <input type="text" class="form-control w-100" placeholder='<%= @location %>' name="location" id="city">
       </div>
@@ -19,5 +18,4 @@
         <button type="button" class="btn btn-primary w-100" id="filter-btn">Filter</button>
       </div>
     <% end %>
-  </div>
 </div>

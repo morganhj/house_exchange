@@ -13,4 +13,12 @@ class Home < ApplicationRecord
 		lat = self.latitude > bounds[:sw_lat] && self.latitude < bounds[:ne_lat]
 		return lng && lat
 	end
+
+	def unavailable_dates
+
+      	exchanges.pluck(:start_date, :end_date).map do |range|
+        	{ from: range[0], to: range[1] }
+    	end
+  	end
+
 end

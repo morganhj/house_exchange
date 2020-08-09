@@ -1,0 +1,40 @@
+/*FOOTER*/
+footer{
+  margin: 2rem 8rem;
+}
+footer .footer-first{
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr;
+  grid-column-gap: 60px;
+}
+footer h3{
+  font-size: 1.2rem;
+}
+footer ul{
+  list-style-type: none;
+  padding-left: 0;
+}
+footer p, footer a{
+  color: #8a8a8a;
+  margin-bottom: 0.5rem;
+}
+footer .social-icons a{
+  color: #b7b7b7;
+  font-size: 25px;
+  margin: 0.5rem 0.5rem;
+}
+footer .social-icons a:hover, footer a:hover {
+  text-decoration: none;
+  color: #f2994a;
+}@media screen and (max-width: 420px) {
+  footer {
+    margin: 2rem 2rem;
+  }
+  footer .footer-first {
+    display: flex;
+    flex-direction: column;
+  }
+  footer .footer-first div{
+    margin-bottom: 1rem;
+  }
+}

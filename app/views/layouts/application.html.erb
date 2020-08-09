@@ -4,6 +4,17 @@
     <title>Home4Home</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="description" content="Trade houses with people all over the world and
+    feel like a local wherever you are." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@home4home" />
+    <meta name="twitter:creator" content="@home4home" />
+    <meta property="og:title" content="Home4Home - Feel like home wherever you go" />
+    <meta property="og:url" content="https://www.home4home.com" />
+    <meta property="og:description" content="Trade houses with people all over the world and
+    feel like a local wherever you are." />
+    <meta property="og:image" content="https://mymoovers.com.au/wp-content/uploads/2017/01/moving-house-icon-300px-min.png"/>
+    <meta property="og:type" content="website" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,7 +25,14 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-
+    <% if current_page?(root_path) %>
     <%= yield %>
+    <% else %>
+    <div style="margin-top: 140px;">
+      <%= yield %>
+    </div>        
+    <% end %>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>

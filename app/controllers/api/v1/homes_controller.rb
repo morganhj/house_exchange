@@ -1,5 +1,5 @@
 class Api::V1::HomesController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:index]
   def index
     @category = params[:category]
     # @capacity = params[:capacity]
