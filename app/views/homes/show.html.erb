@@ -19,12 +19,14 @@
         <div class="row">
           <% if @home.photos.first.nil? %>
               <div class="col-6 d-flex justify-content-center">
-                <%= cl_image_tag "no_photo", height: 510, width: 510, crop: :fill, class: "home-photo dropdown-toggle" %>
+                <%= cl_image_tag "no_photo", height: 510, width: 510, crop: :fill, class: "img-fluid" %>
               </div>
               <div class="col-6">
                 <div class="small-images-container">
                   <% 4.times do %>
-                  <%= cl_image_tag "no_photo", height: 250, width: 250, crop: :fill, class: "home-photo dropdown-toggle" %>
+                  <div>
+                    <%= cl_image_tag "no_photo", height: 250, width: 250, crop: :fill, class: "img-fluid" %>
+                  </div>
                   <% end %>
                 </div>
               </div>
@@ -35,7 +37,9 @@
               <div class="col-6">
                 <div class="small-images-container">
                   <% @home.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key, height: 250, width: 250, crop: :fill, class: "home-photo dropdown-toggle" %>
+                    <div>
+                      <%= cl_image_tag photo.key, height: 250, width: 250, crop: :fill, class: "img-fluid" %>
+                    </div>
                   <% end %>
                 </div>
               </div>
