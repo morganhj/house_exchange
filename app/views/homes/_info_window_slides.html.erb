@@ -1,0 +1,30 @@
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="10000">
+      <% if home.photos.attached? %>
+      <%= cl_image_tag home.photos.last.key, class:"d-block w-100 window-carousel-image"%>
+      <% else %>
+      <img class="card-img-top" style="height: 200px;" src="https://images.unsplash.com/photo-1519226612673-73c0234437ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="Card image cap">
+      <% end %>
+    </div>
+
+ <% if home.photos.attached? %>
+    <% home.photos.each do |photos| %>
+    <div class="carousel-item" data-interval="2000">
+      <%= cl_image_tag photos.key, class:"d-block w-100 window-carousel-image" %>
+    </div>
+    <% end %>
+  <% end %>
+
+
+
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

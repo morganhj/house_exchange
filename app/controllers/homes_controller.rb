@@ -39,7 +39,7 @@ class HomesController < ApplicationController
     @category = params["/homes"].nil? ? "All Categories" : params["/homes"]["category"]
     @filter = { address: @address, category: @category }.to_json
    
-    @homes = policy_scope(Home)
+    @homes = Home.all
     @homes_geocoded = @homes.geocoded #returns flats with coordinates
 
     @markers = @homes_geocoded.map do |home|
@@ -69,11 +69,30 @@ class HomesController < ApplicationController
   end
 
   def edit
-    
+    @home = Home.find(params[:id])
   end
 
   def update
+    @home = Home.find(params[:id])
+
+    category = params[:home][:category][:name]
+    spec = params[:home][:spec]
     
+
+    @user = current_user
+    @home.user = @user
+    
+    
+    if @home.update(home_params)
+      @home.update(category_id: Category.find_by(name: category).id)
+      @home.spec.update(rooms: spec[:rooms].to_i, 
+        area: spec[:area].to_i, 
+        bathrooms: spec[:bathrooms].to_i, 
+        characteristics: params[:spec][:characteristics])
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private

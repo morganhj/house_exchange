@@ -7,4 +7,10 @@ class Home < ApplicationRecord
 	has_many :exchanges
 	has_many_attached :photos
 	CATEGORIES = Category.all.map{|category| category.name}
+
+	def is_in_mapbox(bounds)
+		lng = self.longitude > bounds[:sw_lng] && self.longitude < bounds[:ne_lng]
+		lat = self.latitude > bounds[:sw_lat] && self.latitude < bounds[:ne_lat]
+		return lng && lat
+	end
 end

@@ -12,7 +12,7 @@
   </span>
     <%= f.fields_for :category do |c| %>
         <span class="h5 my-3 d-block w-100 mr-2">
-          <%= c.input :name, collection: Home::CATEGORIES[0..-1],
+          <%= c.input :name, collection: Home::CATEGORIES[0..-1], label: "Category",
                   required: true %>
         </span>
     <% end %>
@@ -22,15 +22,22 @@
   </span>
   
   <%= f.fields_for :spec do |h| %>
-      <span class="h5 my-3 d-block w-100 ">
-         <%= h.input :rooms, as: :numeric, required: true %>
-      </span>
-      <span class="h5 my-3 d-block w-100 ">
-         <%= h.input :area, as: :numeric, required: true  %>
-      </span>
-      <span class="h5 my-3 d-block w-100 ">
-         <%= h.input :bathrooms, as: :numeric, required: true  %>
-      </span>
+      <div class="d-flex justify-content-around">
+        <span class="h5 my-3 d-block w-50 mr-2 ">
+          <%= h.input :rooms, as: :numeric, required: true %>
+        </span>
+        <span class="h5 my-3 d-block w-50 ml-2">
+          <%= h.input :area, as: :numeric, required: true  %>
+        </span>
+      </div>
+      <div class="d-flex justify-content-around">
+        <span class="h5 my-3 d-block w-50 mr-2 ">
+          <%= h.input :bathrooms, as: :numeric, required: true  %>
+        </span>
+        <span class="h5 my-3 d-block w-50 ml-2">
+          <%= h.input :capacity, as: :numeric, required: true  %>
+        </span>
+      </div>
       <span class="h5 my-3 d-block">Perks</span>
       <div class="btn-group btn-group-toggle char-grid mb-3" id="new-spec-chars">
         <% Spec::CHARACTERISTICS.each do |characteristic| %>
