@@ -28,7 +28,31 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
+// import "@fortawesome/fontawesome-free/css/all.min.css"
+import $ from "jquery"
+import "popper.js"
+import "../plugins/flatpickr";
+import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
+
+import { initMapbox } from '../plugins/init_mapbox';
+import { initAutocompleteLocation } from "../plugins/init_autocomplete";
+import { initAutocompleteCity } from "../plugins/init_autocomplete";
+// import { initChatbox } from "../plugins/init_chatbox";
+// import { initCalendar } from "../plugins/init_calendar";
+import { initHomesForm } from "../plugins/init_homes_form";
+// import { scrollLastMessageIntoView } from '../components/scroll';
+
+
+
+
+// initChatbox();
+// initCalendar();
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+	initAutocompleteLocation();
+	initAutocompleteCity();
+	initMapbox();
+	initHomesForm();
 });

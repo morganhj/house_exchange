@@ -1,0 +1,21 @@
+// Specific CSS for your home-page
+.characteristics {
+	display: grid;
+	grid-template-rows: repeat(auto-fill);
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 10px;
+}
+
+.modal-characteristics {
+	display: grid;
+	grid-template-rows: repeat(auto-fill);
+	grid-template-columns: repeat( auto-fit, minmax(150px, 1fr) );
+	grid-gap: 10px;
+}
+
+.char-grid {
+	display: grid;
+	grid-template-rows: repeat(auto-fill);
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 10px;
+}

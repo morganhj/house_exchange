@@ -1,0 +1,52 @@
+<%= simple_form_for [@home] do |f| %>
+  <span class="h5 my-3 d-block">
+    <%= f.input :name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Name" } %>
+  </span>
+  <span class="h5 my-3 d-block">
+    <%= f.input :address,
+                required: true,
+                input_html: { autocomplete: "Address", id: 'address' }  %>
+  </span>
+    <%= f.fields_for :category do |c| %>
+        <span class="h5 my-3 d-block w-100 mr-2">
+          <%= c.input :name, collection: Home::CATEGORIES[0..-1],
+                  required: true %>
+        </span>
+    <% end %>
+  <span class="h5 my-3 d-block">
+    <%= f.input :description,
+                required: true %>
+  </span>
+  
+  <%= f.fields_for :spec do |h| %>
+      <span class="h5 my-3 d-block w-100 ">
+         <%= h.input :rooms, as: :numeric, required: true %>
+      </span>
+      <span class="h5 my-3 d-block w-100 ">
+         <%= h.input :area, as: :numeric, required: true  %>
+      </span>
+      <span class="h5 my-3 d-block w-100 ">
+         <%= h.input :bathrooms, as: :numeric, required: true  %>
+      </span>
+      <span class="h5 my-3 d-block">Perks</span>
+      <div class="btn-group btn-group-toggle char-grid mb-3" id="new-spec-chars">
+        <% Spec::CHARACTERISTICS.each do |characteristic| %>
+          <label class="btn btn-secondary rounded d-flex justify-content-center align-items-center ">
+              <input type="checkbox" name="spec[characteristics][]" id="<%= characteristic %>" autocomplete="off" value="<%= characteristic %>" class="toggle-catch">
+              <i class="<%= Spec.characteristic_icon(characteristic) %> mr-3 my-auto " style="font-size: 21px;" ></i>
+              <strong class="text-start "><%= characteristic %></strong><br>
+          </label>
+        <% end %>
+      </div>
+  <% end %>
+  <span class="h5 my-3 d-block">
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  </span>
+  <div class="d-flex justify-content-between mt-5">
+    <%= link_to 'Cancel', 'javascript:history.back()', class: "btn btn-danger" %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
