@@ -6,7 +6,7 @@
         <%= f.input :end_date, as: :hidden, input_html: {id:"end", class: "datepicker hide"} %>
         <%= f.input :home_id, as: :hidden, input_html: { value: @exchange.home.nil? ? 0 : @exchange.home.id } %>
         <div id="to_calendar_end" class="calendar-btn text-right mb-3">pick end date <i class="fas fa-arrow-right"></i></div>
-          <%= f.submit "Start exchange", class: "btn btn-custom", style: "width: 100%", id: "exchange-start-btn", disabled: true%>
+          <%= f.submit "Start exchange", class: "btn btn-primary text-light rounded-pill", style: "width: 100%", id: "exchange-start-btn", disabled: true%>
 
         <% end %>
       </div>
