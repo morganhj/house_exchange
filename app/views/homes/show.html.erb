@@ -32,7 +32,7 @@
               </div>
           <% else %>
               <div class="col-6 d-flex justify-content-center">
-              <%= cl_image_tag @home.photos.first.key, height: 510, width: 510, crop: :fill, class: "home-photo dropdown-toggle" %>
+                <%= cl_image_tag @home.photos.first.key, height: 510, width: 510, crop: :fill, class: "img-fluid" %>
               </div>
               <div class="col-6">
                 <div class="small-images-container">
