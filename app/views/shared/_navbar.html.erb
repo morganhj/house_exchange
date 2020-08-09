@@ -1,6 +1,4 @@
-<% nav_color = (controller_name == "pages" && action_name == "landing") ?  "dark" : "light" %>
-<% pill_color = (controller_name == "pages" && action_name == "landing") ?  "light" : "dark" %>
-<nav class="navbar navbar-default navbar-fixed-top navbar-expand-sm navbar-<%= nav_color %> navbar-lewagon">
+<nav class="navbar navbar-default navbar-fixed-top navbar-expand-sm <%= content_for?(:navbar_class) ? yield(:navbar_class) : "navbar-light" %> navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
     <i class="fas fa-house-user"></i> <span>Home4Home</span>
     <% end %>
@@ -22,9 +20,13 @@
           <%= link_to "About", "#", class: "ml-3  nav-link" %>
         </li>
       <% if user_signed_in? %>
-        
+
         <li class="nav-item dropdown mx-4">
-          <%= cl_image_tag current_user.avatar.key, height: 300, width: 300, crop: :fill, gravity: :faces, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% if current_user.avatar.attached? %>
+            <%= cl_image_tag current_user.avatar.key, height: 300, width: 300, crop: :fill, gravity: :faces, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= cl_image_tag "avatar", height: 300, width: 300, crop: :fill, gravity: :faces, class: "avatar dropdown-toggle bg-white", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Action", "#", class: "dropdown-item" %>
             <%= link_to "Another action", "#", class: "dropdown-item" %>

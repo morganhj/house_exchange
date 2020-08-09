@@ -26,11 +26,11 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <% if current_page?(root_path) %>
-    <%= yield %>
-    <% else %>
-    <div style="margin-top: 140px;">
       <%= yield %>
-    </div>        
+    <% else %>
+      <main class="<%= content_for?(:main_class) ? yield(:main_class) : "pt-7" %>">
+        <%= yield %>
+      </main>
     <% end %>
 
     <%= render 'shared/footer' %>

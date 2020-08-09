@@ -31,14 +31,15 @@
   margin-top: 0;
   border-radius: 0 0 30px 0;
   overflow: hidden;
+  text-decoration: none !important;
 
   &:hover {
-    text-decoration: none !important;
     transform: scale(1.02);
   }
 }
 
 .home-card-content {
+  text-decoration: none !important;
   display: flex;
   flex-direction: column;
   height: 100%;

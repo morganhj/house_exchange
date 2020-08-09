@@ -1,3 +1,5 @@
+<% navbar_class "navbar-dark" %>
+
 <section class="banner" style="background-image: url(<%= cl_image_path "banner", crop: :fill %>);">
       <div class="d-flex flex-column">
       <div class="row">
@@ -8,23 +10,26 @@
           <p>Trade houses with people all over the world and feel like a local wherever you are</p>
         </div>
       </div>
-		<%= simple_form_for homes_path, url: homes_path, method: :get, html: { class: "form-inline d-block bg-white rounded-lg d-lg-flex justify-content-lg-between search-bar m-0 p-2" } do |f| %>
-			<div class="form-group flex-grow-1">
-				<input type="text" class="form-control w-100" placeholder="City" name="address" id="city">
+		<%= simple_form_for homes_path, url: homes_path, method: :get, html: { class: "form-inline d-block bg-white d-lg-flex justify-content-lg-between search-bar m-0 py-3 px-4", id: "search-form" } do |f| %>
+			<div class="form-group flex-grow-1 ml-2">
+        <label for="city">Location</label>
+				<input type="text" class="form-control w-100 border-0 pl-0" placeholder="Where are you going?" name="address" id="city">
 			</div>
-			<div class="d-xs-block d-sm-flex flex-sm-wrap justify-content-sm-between my-sm-2 my-lg-0">
-				<div class="form-group ml-lg-2">
-					<%= f.input :category, 
-					collection: Home::CATEGORIES, 
-					id: "inputState", 
-					class: "form-control", 
-						label: false,
-						include_blank: false
+			<div class="d-xs-block d-sm-flex flex-sm-wrap justify-content-sm-between my-sm-2 my-lg-0 ml-3 mr-3">
+					<%= f.input :category,
+					collection: Home::CATEGORIES,
+					id: "inputState",
+          wrapper_html: {class: "d-block"},
+          label_html: {class: "justify-content-start"},
+					input_html: {class: "border-0 pl-0"},
+					label: "Home type",
+					include_blank: false
 						%>
-				</div>
 			</div>
 			<div class="form-group ml-2">
-					<%= f.submit "Search", class: "btn btn-primary w-100" %>
+				<%= f.button :button, class: "btn btn-primary rounded-circle text-white", style: "width:50px;height:50px;" do %>
+          <i class="fas fa-search"></i>
+        <% end %>
 			</div>
 		<% end %>
 		</div>
@@ -36,68 +41,80 @@
             <div class="carousel-inner w-100" role="listbox">
                 <div class="carousel-item active">
                     <div class="col-md-4">
-                    	<div class="card card-body">
+                    	<div class="card card-body card-city">
                     		<div class="card-white">
                     			<%= cl_image_tag "moscu", crop: :fill, class: "img-fluid" %>
-                    			<h2>Moscu</h2>
-                    			<p>Unlike its rival, Moscow has a well-defined city centre marked by the Kremlin...</p>
+                          <div class="p-3 text-left">
+                      			<h4>Moscu</h4>
+                      			<p>Unlike its rival, Moscow has a well-defined city centre marked by the Kremlin...</p>
+                          </div>
                     		</div>
                     	</div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="col-md-4">
-                    	<div class="card card-body">
+                    	<div class="card card-body card-city">
                     		<div class="card-white">
                     			<%= cl_image_tag "paris", crop: :fill, class: "img-fluid" %>
-                    			<h3>Paris</h3>  
-                    			<p>Paris (nicknamed the "City of light") is the capital city of France, and the largest city in France..</p>	
+													<div class="p-3 text-left">
+														<h4>Paris</h4>
+														<p>Paris (nicknamed the "City of light") is the capital city of France, and the largest city in France..</p>
+													</div>
                     		</div>
                     	</div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="col-md-4">
-                        <div class="card card-body">
+                        <div class="card card-body card-city">
                             <div class="card-white">
                     			<%= cl_image_tag "singapore", crop: :fill, class: "img-fluid" %>
-                    			<h3>Singapur</h3>  
-                    			<p>Singapore is a wealthy city state in south-east Asia. Once a British colonial trading post..</p>	
+													<div class="p-3 text-left">
+														<h4>Singapur</h4>
+														<p>Singapore is a wealthy city state in south-east Asia. Once a British colonial trading post..</p>
+													</div>
                     		</div>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="col-md-4">
-                        <div class="card card-body">
+                        <div class="card card-body card-city">
                             <div class="card-white">
                     			<%= cl_image_tag "paris_image", crop: :fill, class: "img-fluid" %>
-                    			<h3>Paris</h3>  
-                    			<p>Paris (nicknamed the "City of light") is the capital city of France, and the largest city in France..</p>	
-                    		</div>
-                        </div>
+													<div class="p-3 text-left">
+														<h4>Paris</h4>
+														<p>Paris (nicknamed the "City of light") is the capital city of France, and the largest city in France..</p>
+													</div>
+												</div>
+                      </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="col-md-4">
-                        <div class="card card-body">
+                        <div class="card card-body card-city">
                             <div class="card-white">
                     			<%= cl_image_tag "buenos aires", crop: :fill, class: "img-fluid" %>
-                    			<h3>Buenos Aires</h3>  
-                    			<p>Buenos Aires is the capital and largest city of Argentina. The city is located on the western...</p>	
+													<div class="p-3 text-left">
+														<h4>Buenos Aires</h4>
+														<p>Buenos Aires is the capital and largest city of Argentina. The city is located on the western...</p>
+                    			</div>
                     		</div>
-                        </div>
+                      </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="col-md-4">
-                        <div class="card card-body">
+                        <div class="card card-body card-city">
                             <div class="card-white">
                     			<%= cl_image_tag "lisboa", crop: :fill, class: "img-fluid" %>
-                    			<h3>Lisboa</h3>  
-                    			<p>Lisbon is the stunning capital city of Portugal, and is one of the most charismatic and vibrant cities of Europes...</p>	
-                    		</div>
+													<div class="p-3 text-left">
+														<h4>Lisboa</h4>
+														<p>Lisbon is the stunning capital city of Portugal, and is one of the most charismatic and vibrant cities of Europes...</p>
+													</div>
                         </div>
+                      </div>
                     </div>
                 </div>
             </div>

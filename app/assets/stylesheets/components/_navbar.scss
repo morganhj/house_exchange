@@ -20,7 +20,6 @@
 }
 
 body {
-	min-height:200vh;
 }
 .navbar-default{
   transition:500ms ease;
@@ -29,4 +28,8 @@ body {
 .navbar-default.scrolled{
   background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0));
   z-index: 1000;
+}
+
+.pt-7 {
+  padding-top: 7rem;
 }
